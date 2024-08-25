@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" th:href="@{/header_page.css}" href="../static/css/header_page.css">
+<link rel="stylesheet" th:href="@{/elements.css}" href="../static/css/elements.css">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${typeName}"></title>
+</head>
+<body>
+    <header class="top_container">
+        <div class="head_navbar">
+            <div class="logo" th:text="${typeName}">
+            </div>
+            <div class="head_buttons">
+                <div class="hamburger-menu">
+                    <input id="menu_toggle" type="checkbox">
+                    <label class="menu_btn" for="menu_toggle">
+                        <span></span>
+                    </label>
+                    <div class="menu_box">
+                        <h2>Навигация</h2>
+                        <a class="menu_item" th:href="@{/database}">Просмотр базы данных</a>
+                        <a class="menu_item" th:href="@{/types}">Настройка типов данных</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <div class="add_dpe">
+            <div class="add_dpe__group">
+                <form action="#" th:action="@{/add-element/{id}(id=*{idType})}" th:object="${addElement}" method="post">
+                    <input type="hidden" th:field="*{id}">
+                    <input type="hidden" th:field="*{idType}" th:value="*{idType}">
+                    <input class="add_dpe__input" th:field="*{nameElement}" placeholder="Название элемента точек данных">
+                    <select class="type_dpe" th:field="*{typeSignal}">
+                        <option th:each="state : ${T(ru.gbwh.db.models.TypeSignal).values()}"
+                                th:value="${state}"
+                                th:text="${state}">
+                        </option>
+                    </select>
+                    <input type="submit" class="add_dpe__btn" value="Добавить элемент">
+                </form>
+            </div>
+        </div>
+        <form th:action="@{/change-elements/{id}(id=${addElement.idType})}" method="post" th:object="${struct}">
+            <div class="backside" th:switch="${struct}">
+                <div class="not_elements" th:if="${#lists.isEmpty(struct.typeList)}">
+                    <div class="title-text">Нет элементов для редактирования</div>
+                </div>
+                <div th:if="${not #lists.isEmpty(struct.typeList)}">
+                    <div class="change-elements" >
+                        <div class="title-text">
+                            Просмотр и редактирование существующих элементов точек данных
+                        </div>
+                        <div class="pos_btn">
+                            <input type="submit" class="add_dpe__btn" value="Сохранить изменения">
+                        </div>
+                    </div>
+                    <div th:each="st, stat : *{typeList}">
+                        <div class="row_dpe">
+                            <input type="hidden" th:field="*{typeList[__${stat.index}__].id}" th:value="${st.id}">
+                            <input type="hidden" th:field="*{typeList[__${stat.index}__].idType}" th:value="${st.idType}">
+                            <input class="add_dpe__input" th:field="*{typeList[__${stat.index}__].nameElement}" th:value="${st.nameElement}">
+                            <select class="type_dpe" th:field="*{typeList[__${stat.index}__].typeSignal}">
+                                <option th:each="state : ${T(ru.gbwh.db.models.TypeSignal).values()}"
+                                        th:value="${state}"
+                                        th:text="${state}">
+                                </option>
+                            </select>
+                            <a class="del_dpe__btn" th:href="@{/deleteDpe/{id}/{idType}(id=${st.id}, idType=${st.idType})}">Удалить элемент</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

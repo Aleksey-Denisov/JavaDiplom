@@ -1,0 +1,234 @@
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+.original {
+    background-color: #211616B2;
+}
+
+
+.headers_original {
+    margin-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.headers_dp {
+    display: flex;
+    padding-left: 10px;
+}
+.headers_text_original {
+    padding-left: 12px;
+    position: relative;
+    text-align: left;
+    font-style: normal;
+    font-size: 24px;
+    color: #ffffff;
+}
+.dp_input {
+    height: 35px;
+    width: 50%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+    background-color: #6c6c6c;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.original_data {
+    display: grid;
+    margin-top: 10px;
+    grid-template-columns: 1fr 1fr;
+}
+.original_value {
+    display: flex;
+    padding-left: 10px;
+}
+
+.orginal_label {
+    margin-top: 7px;
+    width: 30%;
+    text-align: left;
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.original_save {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.btn_save {
+    width: auto;
+    height: 35px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: rgb(54, 136, 45);
+    border: 1px solid #222222;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out;
+}
+.btn_save:hover {
+    background-color: rgb(32, 93, 25);
+}
+
+.common_data {
+    display: block;
+    margin-top: 10px;
+}
+.common_value {
+    display: flex;
+    padding-left: 10px;
+    margin-top: 10px;
+}
+
+.common_label {
+    margin-top: 7px;
+    width: 20%;
+    text-align: left;
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.common_input {
+    height: 35px;
+    width: 30%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+    background-color: #6c6c6c;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.alerts{
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.alert_check {
+    display: block;
+    width: 100px;
+    text-align: center;
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.alert_color {
+    margin-left: 10px;
+    display: block;
+    width: 150px;
+    text-align: center;
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.alert_text {
+    margin-left: 10px;
+    display: block;
+    width: 400px;
+    text-align: center;
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.alert_condition {
+    margin-left: 10px;
+    display: block;
+    width: 200px;
+    text-align: center;
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.alert_input_text {
+    height: 35px;
+    width: 100%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+    background-color: #6c6c6c;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.alert_active {
+    margin-top: 20px;
+    margin-left: 10px;
+    display: flex;
+    text-align: left;
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.alert_active_check {
+    padding-left: 20px;
+}
+
+.alert_input_value {
+    height: 35px;
+    width: 100px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+    background-color: #6c6c6c;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.btn_load {
+    width: auto;
+    height: 35px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: rgb(45, 115, 136);
+    border: 1px solid #222222;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out;
+}
+.btn_load:hover {
+    background-color: rgb(25, 93, 83);
+}
+
+.alert_operation {
+    display: flex;
+}
+
+.alert_operation_select {
+    height: 35px;
+    width: 100%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+    background-color: #6c6c6c;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.alert_flex {
+    width: 50%;
+}
+
+.alert_alignment {
+    padding-bottom: 21px;
+}

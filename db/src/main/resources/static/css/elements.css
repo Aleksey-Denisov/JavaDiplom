@@ -1,0 +1,116 @@
+/* Настройка содержимого*/
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+.add_dpe {
+    display: flex;
+}
+
+/* Блок точек данных */
+.add_dpe__group {
+    margin-top: 10px;
+}
+
+.backside {
+    background-color: #211616B2;
+    margin-top: 10px;
+}
+
+.change-elements {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.not_elements{
+    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+.row_dpe {
+    padding-bottom: 10px;
+    margin-left: 20px;
+}
+
+
+/* Кнопка добавить точку */
+.add_dpe__btn {
+    width: auto;
+    height: 35px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: rgb(54, 136, 45);
+    border: 1px solid #222222;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out;
+}
+
+.add_dpe__btn:hover {
+    background-color: rgb(32, 93, 25);
+}
+/* Текстовое поле */
+.add_dpe__input {
+    height: 35px;
+    width: 500px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+    background-color: #6c6c6c;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.add_dpe__group .add_dpe__input::placeholder {
+    color: #c5c5c5;
+}
+
+.type_dpe {
+    height: 35px;
+    width: 100px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+    background-color: #6c6c6c;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.title-text {
+    margin-top: 7px;
+    position: relative;
+    text-align: left;
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+/* Кнопка удалить элемент */
+.del_dpe__btn {
+    width: auto;
+    height: 35px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #e10000;
+    border: 1px solid #222222;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out;
+}
+.del_dpe__btn:hover {
+    background-color: #b24545;
+}
+
+
+

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" th:href="@{/header_page.css}" href="../static/css/header_page.css">
+<link rel="stylesheet" th:href="@{/database.css}" href="../static/css/database.css">
+<head>
+    <meta charset="UTF-8">
+    <title>База данных</title>
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+    <script src="/js/database.js"> </script>
+</head>
+<body>
+<header class="top_container">
+    <div class="head_navbar">
+        <div class="logo">
+           База данных
+        </div>
+        <div class="head_buttons">
+            <div class="hamburger-menu">
+                <input id="menu_toggle" type="checkbox">
+                <label class="menu_btn" for="menu_toggle">
+                    <span></span>
+                </label>
+                <div class="menu_box">
+                    <h2>Навигация</h2>
+                    <a class="menu_item" th:href="@{/types}">Настройка типов данных</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="container">
+    <div th:switch="${types}">
+        <div class="types_headers" th:if="${#lists.isEmpty(types)}">База данных пуста!</div>
+        <div class="types" th:if="${not #lists.isEmpty(types)}">
+            <div th:each="type : ${types}">
+                <div class="type_spoiler">
+                    <div class="type_spoiler_title">
+                        <span class="type_spoiler_arrow"><svg viewBox="-122.9 121.1 105.9 61.9"><path d="M-63.2 180.3l43.5-43.5c1.7-1.7 2.7-4 2.7-6.5s-1-4.8-2.7-6.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8 1-6.5 2.7L-69.9 161l-37.2-37.2c-1.7-1.7-4-2.7-6.5-2.7s-4.8 1-6.5 2.6c-1.9 1.8-2.8 4.2-2.8 6.6 0 2.3.9 4.6 2.6 6.5 11.4 11.5 41 41.2 43 43.3l.2.2c3.6 3.6 10.3 3.6 13.9 0z"></path></svg></span>
+                        <span class="type_header" th:text="${type.nameDPT}"></span>
+                    </div>
+                    <div class="type_spoiler_content">
+                        <div class="add_dp">
+                            <div class="add_dp__group">
+                                <form action="#" th:action="@{/add-dp/{id}(id=${type.id})}" th:object="${DP}" method="post">
+                                    <input type="hidden" th:field="${DP.id}" >
+                                    <input class="add_dp__input" id="name" th:field="${DP.dataPointName}" placeholder="Название точки данных">
+                                    <input type="submit" class="add_dp__btn" value="Добавить точку данных">
+                                </form>
+                            </div>
+                        </div>
+                        <div th:each="dataPoint : ${dataPoints}">
+                            <div th:if="${dataPoint.idType==type.id}">
+                                <div class="dp_spoiler">
+                                    <div class="dp_spoiler_title">
+                                        <div>
+                                            <span class="dp_spoiler_arrow"><svg viewBox="-122.9 121.1 105.9 61.9"><path d="M-63.2 180.3l43.5-43.5c1.7-1.7 2.7-4 2.7-6.5s-1-4.8-2.7-6.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8 1-6.5 2.7L-69.9 161l-37.2-37.2c-1.7-1.7-4-2.7-6.5-2.7s-4.8 1-6.5 2.6c-1.9 1.8-2.8 4.2-2.8 6.6 0 2.3.9 4.6 2.6 6.5 11.4 11.5 41 41.2 43 43.3l.2.2c3.6 3.6 10.3 3.6 13.9 0z"></path></svg></span>
+                                            <span class="dp_headers" th:text="${dataPoint.dataPointName}"></span>
+                                        </div>
+                                        <div>
+                                            <a class="btn_red">Редактировать</a>
+                                            <a class="btn_del" th:href="@{/deleteDP/{id}(id=${dataPoint.id})}">Удалить</a>
+                                        </div>
+                                        <div style="display: none">
+                                                <div class="dp_change">
+                                                    <input class="add_dp__input" th:id="${dataPoint.dataPointName}" th:value="${dataPoint.dataPointName}" placeholder="Название точки данных">
+                                                    <input type="submit" class="add_dp__btn" value="Сохранить изменения">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="dp_spoiler_content">
+                                        <div th:each="struct : ${structs}">
+                                            <div th:if="${struct.idType==type.id}">
+                                                <div class="elements_spoiler">
+                                                    <div class="elements_spoiler_title">
+                                                        <span class="element_headers" th:text="${struct.nameElement}"></span>
+                                                        <a class="btn_info" th:href="@{elements/{idDp}/{idDpe}/{typeSignal}(idDp=${dataPoint.id}, idDpe=${struct.id}, typeSignal=${struct.typeSignal})}">Настройки элемента точки данных</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

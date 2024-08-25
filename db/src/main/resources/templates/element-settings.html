@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" th:href="@{/header_page.css}" href="../static/css/header_page.css">
+<link rel="stylesheet" th:href="@{/original.css}" href="../static/css/original.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Свойства элемента точки данных</title>
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+    <script src="/js/original.js"> </script>
+    <script src="/js/add-alert.js"> </script>
+</head>
+<body th:onload="updateEvent()">
+<header class="top_container">
+    <div class="head_navbar">
+        <div class="logo">
+            Свойства элемента точки данных
+        </div>
+        <div class="head_buttons">
+            <div class="hamburger-menu">
+                <input id="menu_toggle" type="checkbox">
+                <label class="menu_btn" for="menu_toggle">
+                    <span></span>
+                </label>
+                <div class="menu_box">
+                    <h2>Навигация</h2>
+                    <a class="menu_item" th:href="@{/database}">Просмотр базы данных</a>
+                    <a class="menu_item" th:href="@{/types}">Настройка типов данных</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="container">
+    <div class="original">
+        <div class="headers_original">
+            <div class="headers_text_original">Оригинальное значение</div>
+            <div class="headers_dp">
+                <input id="type" type="hidden" th:value="${typeSignal}">
+                <div class="orginal_label"><label>Точка данных</label></div>
+                <input class="dp_input" disabled id="dpe" th:value="${dp} + ${element}">
+            </div>
+        </div>
+        <div th:switch="${typeSignal}">
+            <div th:case="${T(ru.gbwh.db.models.TypeSignal).INT}">
+                <form action="#" th:action="@{/saveInt/{dp}/{element}/{typeSignal}(dp=${dp}, element=${element}, typeSignal=${typeSignal})}" method="post" th:object="${signal}">
+                    <div class="original_data">
+                        <div class="original_value">
+                            <input type="hidden" th:field="*{idDP}" th:value="*{idDP}">
+                            <input type="hidden" th:field="*{idStructType}" th:value="*{idStructType}">
+                            <div class="orginal_label"><label>Значение</label></div>
+                            <input class="dp_input" type="number" th:field="*{signalValue}" th:value="*{signalValue}">
+                        </div>
+                        <div class="original_value">
+                            <div class="orginal_label"><label>Время сигнала</label></div>
+                            <input class="dp_input" disabled th:field="*{timeSignal}" th:value="*{timeSignal}">
+                        </div>
+                        <div class="original_value">
+                            <div class="orginal_label"><label>Активность</label></div>
+                            <div class="orginal_label"><input type="checkbox" th:field="*{activeSig}" th:value="*{activeSig}"></div>
+                        </div>
+                        <div class="original_value">
+                            <div class="orginal_label"><label>Недостоверность</label></div>
+                            <input type="checkbox" th:field="*{bad}" th:value="*{bad}">
+                        </div>
+                    </div>
+                    <div class="original_save">
+                        <input class="btn_save" type="submit" value="Сохранить изменения">
+                    </div>
+                </form>
+            </div>
+            <div th:case="${T(ru.gbwh.db.models.TypeSignal).BOOL}">
+                <form action="#" th:action="@{/saveBool/{dp}/{element}/{typeSignal}(dp=${dp}, element=${element}, typeSignal=${typeSignal})}" method="post" th:object="${signal}">
+                    <div class="original_data">
+                        <div class="original_value">
+                            <input type="hidden" th:field="*{idDP}" th:value="*{idDP}">
+                            <input type="hidden" th:field="*{idStructType}" th:value="*{idStructType}">
+                            <div class="orginal_label"><label>Значение</label></div>
+                            <input class="dp_input" th:field="*{signalValue}" th:value="*{signalValue}">
+                        </div>
+                        <div class="original_value">
+                            <div class="orginal_label"><label>Время сигнала</label></div>
+                            <input class="dp_input" disabled th:field="*{timeSignal}" th:value="*{timeSignal}">
+                        </div>
+                        <div class="original_value">
+                            <div class="orginal_label"><label>Активность</label></div>
+                            <div class="orginal_label"><input type="checkbox" th:field="*{activeSig}" th:value="*{activeSig}"></div>
+                        </div>
+                        <div class="original_value">
+                            <div class="orginal_label"><label>Недостоверность</label></div>
+                            <input type="checkbox" th:field="*{bad}" th:value="*{bad}">
+                        </div>
+                    </div>
+                    <div class="original_save">
+                        <input class="btn_save" type="submit" value="Сохранить изменения">
+                    </div>
+                </form>
+            </div>
+            <div th:case="${T(ru.gbwh.db.models.TypeSignal).DOUBLE}">
+                <form action="#" th:action="@{/saveDouble/{dp}/{element}/{typeSignal}(dp=${dp}, element=${element}, typeSignal=${typeSignal})}" method="post" th:object="${signal}">
+                    <div class="original_data">
+                        <div class="original_value">
+                            <input type="hidden" th:field="*{idDP}" th:value="*{idDP}">
+                            <input type="hidden" th:field="*{idStructType}" th:value="*{idStructType}">
+                            <div class="orginal_label"><label>Значение</label></div>
+                            <input class="dp_input" type="number" step="0.001" th:field="*{signalValue}" th:value="*{signalValue}">
+                        </div>
+                        <div class="original_value">
+                            <div class="orginal_label"><label>Время сигнала</label></div>
+                            <input class="dp_input" disabled th:field="*{timeSignal}" th:value="*{timeSignal}">
+                        </div>
+                        <div class="original_value">
+                            <div class="orginal_label"><label>Активность</label></div>
+                            <div class="orginal_label"><input type="checkbox" th:field="*{activeSig}" th:value="*{activeSig}"></div>
+                        </div>
+                        <div class="original_value">
+                            <div class="orginal_label"><label>Недостоверность</label></div>
+                            <input type="checkbox" th:field="*{bad}" th:value="*{bad}">
+                        </div>
+                    </div>
+                    <div class="original_save">
+                        <input class="btn_save" type="submit" value="Сохранить изменения">
+                    </div>
+                </form>
+            </div>
+            <div th:case="${T(ru.gbwh.db.models.TypeSignal).STRING}">
+                <form action="#" th:action="@{/saveString/{dp}/{element}/{typeSignal}(dp=${dp}, element=${element}, typeSignal=${typeSignal})}" method="post" th:object="${signal}">
+                    <div class="original_data">
+                        <div class="original_value">
+                            <input type="hidden" th:field="*{idDP}" th:value="*{idDP}">
+                            <input type="hidden" th:field="*{idStructType}" th:value="*{idStructType}">
+                            <div class="orginal_label"><label>Значение</label></div>
+                            <input class="dp_input" th:field="*{signalValue}" th:value="*{signalValue}">
+                        </div>
+                        <div class="original_value">
+                            <div class="orginal_label"><label>Время сигнала</label></div>
+                            <input class="dp_input" disabled th:field="*{timeSignal}" th:value="*{timeSignal}">
+                        </div>
+                        <div class="original_value">
+                            <div class="orginal_label"><label>Активность</label></div>
+                            <div class="orginal_label"><input type="checkbox" th:field="*{activeSig}" th:value="*{activeSig}"></div>
+                        </div>
+                        <div class="original_value">
+                            <div class="orginal_label"><label>Недостоверность</label></div>
+                            <input type="checkbox" th:field="*{bad}" th:value="*{bad}">
+                        </div>
+                    </div>
+                    <div class="original_save">
+                        <input class="btn_save" type="submit" value="Сохранить изменения">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="original">
+        <div class="headers_original">
+            <div class="headers_text_original">Описания и псевдонимы</div>
+        </div>
+        <div th:if="${typeSignal == T(ru.gbwh.db.models.TypeSignal).INT or typeSignal == T(ru.gbwh.db.models.TypeSignal).DOUBLE}">
+            <form action="#" th:action="@{/numCommon/{dp}/{element}/{typeSignal}(dp=${dp}, element=${element}, typeSignal=${typeSignal})}" method="post" th:object="${common}">
+                <input type="hidden" th:field="*{id}" th:value="*{id}">
+                <input type="hidden" th:field="*{idDp}" th:value="*{idDp}">
+                <input type="hidden" th:field="*{idElement}" th:value="*{idElement}">
+                <div class="common_data">
+                    <div class="common_value">
+                        <div class="common_label"><label>Описание точки данных</label></div>
+                        <input class="common_input" th:field="*{description}" th:value="*{description}">
+                    </div>
+                    <div class="common_value">
+                        <div class="common_label"><label>Псевдоним точки данных</label></div>
+                        <input class="common_input" th:field="*{alias}" th:value="*{alias}">
+                    </div>
+                    <div class="common_value">
+                        <div class="common_label"><label>Единица измерения</label></div>
+                        <input class="common_input" th:field="*{unit}" th:value="*{unit}">
+                    </div>
+                </div>
+                <div class="original_save">
+                    <input class="btn_save" type="submit" value="Сохранить изменения">
+                </div>
+            </form>
+        </div>
+        <div th:if="${typeSignal == T(ru.gbwh.db.models.TypeSignal).BOOL or typeSignal == T(ru.gbwh.db.models.TypeSignal).STRING}">
+            <form action="#" th:action="@{/wordCommon/{dp}/{element}/{typeSignal}(dp=${dp}, element=${element}, typeSignal=${typeSignal})}" method="post" th:object="${common}">
+                <input type="hidden" th:field="*{id}" th:value="*{id}">
+                <input type="hidden" th:field="*{idDp}" th:value="*{idDp}">
+                <input type="hidden" th:field="*{idElement}" th:value="*{idElement}">
+                <div class="common_data">
+                    <div class="common_value">
+                        <div class="common_label">Описание точки данных</div>
+                        <input class="common_input" th:field="*{description}" th:value="*{description}">
+                    </div>
+                    <div class="common_value">
+                        <div class="common_label">Псевдоним точки данных</div>
+                        <input class="common_input" th:field="*{alias}" th:value="*{alias}">
+                    </div>
+                </div>
+                <div class="original_save">
+                    <input class="btn_save" type="submit" value="Сохранить изменения">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="original">
+        <div th:switch="${typeSignal}">
+            <div th:case="${T(ru.gbwh.db.models.TypeSignal).BOOL}">
+                <div class="headers_original">
+                    <div class="headers_text_original">Настройка сообщений</div>
+                </div>
+                <form action="#" th:action="@{/alertBool}" method="post" th:object="${alert}">
+                    <input type="hidden" th:field="*{id}" th:value="*{id}">
+                    <input type="hidden" th:field="*{idDp}" th:value="*{idDp}">
+                    <input type="hidden" th:field="*{idElement}" th:value="*{idElement}">
+                    <div class="common_data">
+                        <div class="common_value">
+                            <div class="alert_check">
+                                <div>Допустимый диапазон</div>
+                                <input type="checkbox" th:field="*{value}" th:value="*{value}">
+                            </div>
+                            <div class="alert_color">
+                                <div>Цвет</div>
+                                <select class="alert_input_text" th:field="*{colorAlert}">
+                                    <option th:each="state : ${T(ru.gbwh.db.models.alert.AlertColor).values()}"
+                                            th:value="${state}"
+                                            th:text="${state}">
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="alert_text">
+                                <div>Текст сообщения</div>
+                                <input class="alert_input_text" th:field="*{alarmText}" th:value="*{alarmText}">
+                            </div>
+                            <div class="alert_condition">
+                                <div>Текст Установлен</div>
+                                <input class="alert_input_text" th:field="*{installedText}" th:value="*{installedText}">
+                            </div>
+                            <div class="alert_condition">
+                                <div>Текст Снят</div>
+                                <input class="alert_input_text" th:field="*{removedText}" th:value="*{removedText}">
+                            </div>
+                        </div>
+                        <div class="alert_active">
+                            <div>Активность</div>
+                            <div class="alert_active_check"><input type="checkbox" th:field="*{active}" th:value="*{active}"></div>
+                        </div>
+                    </div>
+                    <div class="original_save">
+                        <input class="btn_save" type="submit" value="Сохранить изменения">
+                    </div>
+                </form>
+            </div>
+            <div th:case="${T(ru.gbwh.db.models.TypeSignal).INT}">
+                <div class="headers_original">
+                    <div class="headers_text_original">Настройка сообщений</div>
+                    <div class="headers_dp">
+                        <div class="orginal_label"><label>Диапазон</label></div>
+                        <input id="alerts_array_value" hidden th:value="${#lists.size(alert)}">
+                        <input class="alert_input_value" id="value_alerts" onclick='addAlerts("value_alerts","alerts_array_value")' type="number" min="1" max="9" th:value="${#lists.size(alert)}">
+                    </div>
+                </div>
+                <form action="#" th:action="@{/alertInt}" method="post" th:object="${alert}">
+                    <input type="hidden" th:field="*{idDP}" th:value="*{idDP}">
+                    <input type="hidden" th:field="*{idElement}" th:value="*{idElement}">
+                    <div class="alerts" th:each="st, stat : *{alerts}">
+                        <input type="hidden" th:field="*{alerts[__${stat.index}__].id}" th:value="${st.id}">
+                        <input type="hidden" th:field="*{alerts[__${stat.index}__].idDp}" th:value="${st.idDp}">
+                        <input type="hidden" th:field="*{alerts[__${stat.index}__].idElement}" th:value="${st.idElement}">
+                        <div th:id="alert__div + ${stat.index}" class="common_value">
+                            <input type="hidden" th:field="*{alerts[__${stat.index}__].idPosition}" th:value="${st.idPosition}">
+                            <div class="alert_check">
+                                <div>Допустимый диапазон</div>
+                                <div class="alert_operation">
+                                    <div class="alert_flex">
+                                        <input class="alert_input_text" th:field="*{alerts[__${stat.index}__].value}" th:value="${st.value}">
+                                    </div>
+                                    <div class="alert_flex">
+                                        <select class="alert_operation_select" th:field="*{alerts[__${stat.index}__].operation}">
+                                            <option th:each="state : ${T(ru.gbwh.db.models.alert.AlertOperation).values()}"
+                                                    th:value="${state}"
+                                                    th:text="${state.displayValue}">
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="alert_color">
+                                <div class="alert_alignment">Цвет</div>
+                                <select class="alert_input_text" th:field="*{alerts[__${stat.index}__].colorAlert}">
+                                    <option th:each="state : ${T(ru.gbwh.db.models.alert.AlertColor).values()}"
+                                            th:value="${state}"
+                                            th:text="${state}">
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="alert_text">
+                                <div class="alert_alignment">Текст сообщения</div>
+                                <input class="alert_input_text" th:field="*{alerts[__${stat.index}__].alarmText}" th:value="${st.alarmText}">
+                            </div>
+                            <div class="alert_condition">
+                                <div class="alert_alignment">Текст Установлен</div>
+                                <input class="alert_input_text" th:field="*{alerts[__${stat.index}__].installedText}" th:value="${st.installedText}">
+                            </div>
+                            <div class="alert_condition">
+                                <div class="alert_alignment">Текст Снят</div>
+                                <input class="alert_input_text" th:field="*{alerts[__${stat.index}__].removedText}" th:value="${st.removedText}">
+                            </div>
+                        </div>
+                    </div>>
+                    <div class="original_save">
+                        <input class="btn_save" type="submit" value="Сохранить изменения">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

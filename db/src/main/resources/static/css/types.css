@@ -1,0 +1,130 @@
+/* Настройка содержимого*/
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+.add_dpt {
+    display: flex;
+    margin-top: 20px;
+}
+
+/* Блок точек данных */
+.add_dpt__group {
+    display: flex;
+    margin-top: 10px;
+}
+/* Кнопка добавить точку */
+.add_dpt__btn {
+    display: inline-block;
+    width: 170px;
+    height: 35px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #4f71ee;
+    border: 1px solid #222222;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out;
+}
+.add_dpt__btn:hover {
+    background-color: #5170d7;
+}
+/* Текстовое поле */
+.add_dpt__group .add_dpt__input {
+    height: 35px;
+    width: 500px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+    background-color: #6c6c6c;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.add_dpt__group .add_dpt__input::placeholder {
+    color: #c5c5c5;
+}
+
+/* Стиль для заголовков*/
+.page_text h2 {
+    margin-top: 10px;
+    margin-left: 1%;
+    position: relative;
+    text-align: left;
+    font-style: normal;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+.types_spoiler_title {
+    position: relative;
+    background-color: #211616B2;
+    margin-top: 10px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-left: 20px;
+}
+
+/* Стиль заголовка для элементов*/
+.types_headers {
+
+    position: relative;
+    text-align: left;
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
+}
+.dpt_header {
+    width: 80%;
+    margin-top: 7px;
+}
+
+.btn {
+    margin-left: -75px;
+}
+
+/* Кнопка редактирования */
+.btn_red {
+    display: inline-block;
+    width: 170px;
+    height: 35px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #e15a00;
+    border: 1px solid #222222;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out;
+}
+.btn_red:hover {
+    background-color: #b26e45;
+}
+
+/* Кнопка удаления */
+.btn_del {
+    display: inline-block;
+    width: 130px;
+    margin-left: 1%;
+    height: 35px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #e10000;
+    border: 1px solid #222222;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out;
+}
+.btn_del:hover {
+    background-color: #b24545;
+}

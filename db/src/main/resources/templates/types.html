@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" th:href="@{/header_page.css}" href="../static/css/header_page.css">
+<link rel="stylesheet" th:href="@{/types.css}" href="../static/css/types.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Типы данных</title>
+</head>
+<body>
+<header class="top_container">
+    <div class="head_navbar">
+        <div class="logo">
+            Настройка типов данных
+        </div>
+        <div class="head_buttons">
+            <div class="hamburger-menu">
+                <input id="menu_toggle" type="checkbox">
+                <label class="menu_btn" for="menu_toggle">
+                    <span></span>
+                </label>
+                <div class="menu_box">
+                    <h2>Навигация</h2>
+                    <a class="menu_item" th:href="@{/database}">Просмотр базы данных</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="container">
+    <div class="add_dpt">
+        <div class="add_dpt__group">
+            <form action="#" th:action="@{/add-type}" th:object="${type}" method="post">
+                <input class="add_dpt__input" th:field="${type.nameDPT}" placeholder="Название типа точек данных">
+                <input type="submit" class="add_dpt__btn" value="Добавить тип">
+            </form>
+        </div>
+    </div>
+    <div th:switch="${types}">
+        <div class="page_text" th:if="${#lists.isEmpty(types)}">
+            <h2>Нет типов данных</h2>
+        </div>
+        <div class="page_text" th:if="${not #lists.isEmpty(types)}">
+            <h2>Список всех типов данных</h2>
+        </div>
+        <div th:each="type : ${types}">
+            <div class="dpt_content">
+                <div class="types_spoiler">
+                    <div class="types_spoiler_title">
+                        <div class="dpt_header">
+                            <span class="types_headers" th:text="${type.nameDPT}"></span>
+                        </div>
+                        <div class="btn">
+                            <a class="btn_red" th:href="@{change-elements/{id}(id=${type.id})}">Редактировать тип</a>
+                            <a class="btn_del" th:href="@{delete-type/{id}(id=${type.id})}">Удалить тип</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

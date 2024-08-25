@@ -1,0 +1,267 @@
+
+/* Настройка содержимого*/
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+.top_types {
+    display: flex;
+    margin-top: 20px;
+}
+ /* Стиль для заголовков*/
+.types_headers {
+    margin-top: 7px;
+    position: relative;
+    text-align: center;
+    font-style: normal;
+    font-size: 26px;
+    color: #ffffff;
+}
+
+.type_header {
+    margin-left: 1%;
+    position: relative;
+    text-align: center;
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.type_spoiler_title {
+    cursor: pointer;
+    position: relative;
+    margin-top: 5px;
+    background-color: #211616B2;
+    width: 100%;
+    display: flex;
+    padding-left: 20px;
+}
+ /* Стиль контента типов*/
+.type_spoiler_content {
+    display: none;
+    padding-top: 0;
+    padding-bottom: 10px;
+    background-color: #211616B2;
+    transition: 0.15s ease-out;
+    height: auto;
+    overflow: hidden;
+    margin-top: -10px;
+    opacity: 0;
+    font-size: 14px;
+    color: #444;
+}
+
+/* Стиль при открытии контента*/
+.type_spoiler_content.open {
+    display: block;
+    margin-top: 0;
+    max-height: 100%;
+    opacity: 1;
+}
+
+/* Стиль для стрелочки */
+.type_spoiler_title .type_spoiler_arrow {
+    display: inline-block;
+    font-size: 20px;
+    transition: all .1s;
+    vertical-align: middle;
+}
+
+.type_spoiler_title .type_spoiler_arrow svg {
+    fill: #f55003;
+    width: 13px;
+}
+.type_spoiler_title .type_spoiler_arrow.open {
+    transform: rotate(180deg);
+}
+
+/* Блок точек данных */
+.add_dp__group {
+    display: flex;
+    margin-top: 10px;
+}
+/* Кнопка добавить точку */
+.add_dp__btn {
+    display: inline-block;
+    width: 270px;
+    height: 35px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #35862f;
+    border: 1px solid #222222;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out;
+}
+.add_dp__btn:hover {
+    background-color: #1e6521;
+}
+/* Текстовое поле */
+.add_dp__input {
+    margin-left: 60px;
+    height: 35px;
+    width: 500px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+    background-color: #6c6c6c;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.add_dp__input::placeholder {
+    color: #c5c5c5;
+}
+
+.dp_change {
+    display: flex;
+}
+
+/* Заголовок спойлера */
+.dp_spoiler_title {
+    cursor: pointer;
+    position: relative;
+    background-color: #211616B2;
+    margin-top: 10px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-left: 20px;
+}
+
+/* Контент точек*/
+.dp_spoiler_content {
+    display: none;
+    padding-top: 0;
+    padding-bottom: 10px;
+    background-color: #211616B2;
+    transition: 0.15s ease-out;
+    height: auto;
+    overflow: hidden;
+    margin-top: -10px;
+    opacity: 0;
+    font-size: 14px;
+    color: #444;
+}
+
+.dp_spoiler_content.open {
+    display: block;
+    margin-top: 0;
+    max-height: 100%;
+    opacity: 1;
+}
+
+.dp_spoiler_title .dp_spoiler_arrow {
+    display: inline-block;
+    font-size: 20px;
+    margin-left: 20px;
+    transition: all .1s;
+    vertical-align: middle;
+}
+
+.dp_spoiler_title .dp_spoiler_arrow svg {
+    fill: #f55003;
+    width: 13px;
+}
+.dp_spoiler_title .dp_spoiler_arrow.open {
+    transform: rotate(180deg);
+}
+
+/* Стиль заголовка для точек */
+.dp_headers {
+    padding-top: 7px;
+    margin-left: 1%;
+    position: relative;
+    text-align: center;
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+/* Кнопка редактирования */
+.btn_red {
+    display: inline-block;
+    width: 130px;
+    margin-left: -15px;
+    height: 35px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #e15a00;
+    border: 1px solid #222222;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out;
+}
+.btn_red:hover {
+    background-color: #b26e45;
+}
+
+/* Кнопка удаления */
+.btn_del {
+    display: inline-block;
+    width: 130px;
+    margin-left: 1%;
+    height: 35px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #e10000;
+    border: 1px solid #222222;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out;
+}
+.btn_del:hover {
+    background-color: #b24545;
+}
+
+.elements_spoiler_title {
+    position: relative;
+    background-color: #211616B2;
+    margin-top: 10px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-left: 20px;
+}
+
+/* Стиль заголовка для элементов*/
+.element_headers {
+    margin-top: 7px;
+    margin-left: 75px;
+    position: relative;
+    text-align: left;
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+/* Кнопка инфо */
+.btn_info {
+    display: inline-block;
+    width: 270px;
+    margin-left: -15px;
+    height: 35px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #4f71ee;
+    border: 1px solid #222222;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out;
+}
+.btn_info:hover {
+    background-color: #5170d7;
+}
